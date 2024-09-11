@@ -5,7 +5,7 @@ require('dotenv').config();
 function generateTokens(payload) {
     return {
         //восковый билет
-        accesToken: jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
+        accessToken: jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: `${1000 * 60 * 5}`,
         }),
         //чек

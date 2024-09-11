@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { axiosRequest } from "../../services/axiosInstance";
+import { axiosRequest } from "../../services/axiosinstance";
 import { AppContext } from "../../app/AppContext";
 
 function PropertyFormUpdate({ property, setProperties }) {
@@ -24,6 +24,7 @@ function PropertyFormUpdate({ property, setProperties }) {
         photo,
         address,
       });
+      // console.log(response);
       if (response.status === 200) {
         setProperties((prev) =>
           prev.map((prop) =>

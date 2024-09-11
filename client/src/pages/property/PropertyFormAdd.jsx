@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../app/AppContext";
-import { axiosRequest } from "../../services/axiosInstance";
+import { axiosRequest } from "../../services/axiosinstance";
 
 function PropertyFormAdd({ setProperties }) {
   const [categoryId, setCategoryId] = useState(0);

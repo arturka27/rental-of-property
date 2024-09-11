@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import PropertyFormUpdate from "./PropertyFormUpdate";
 import ModalWindow from "../../shared/ui/ModalWindow";
 import { AppContext } from "../../app/AppContext";
-import { axiosRequest } from "../../services/axiosInstance";
+import { axiosRequest } from "../../services/axiosinstance";
 
 function PropertyItem({ property, setProperties }) {
   const [active, setActive] = useState(false);
@@ -28,7 +28,7 @@ function PropertyItem({ property, setProperties }) {
       <h3>{property.title}</h3>
       <div>
         <div>
-          <img src={property.photo} alt="property photo" />
+          <img src={property.photo} alt="property photo" width={"500px"}/>
         </div>
         <p>{property.address}</p>
         <p>{property.description}</p>
