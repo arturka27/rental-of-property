@@ -12,9 +12,7 @@ router.use('/tokens', tokensRouter);
 router.use('/categories', categoriesRouter)
 // router.use('/favorites', favoritesRouter)
 
-
-
 // должна быть в конце
-router.use('*', errorRouter);
+router.use("*", errorRouter);
 
 module.exports = router;
