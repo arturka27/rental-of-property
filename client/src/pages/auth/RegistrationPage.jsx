@@ -1,11 +1,11 @@
 import React, { useContext, useState } from'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosRequest, setAccessToken } from '../../services/axiosinstance';
-import { AppContext } from "../app/AppContext";
+import { AppContext } from '../../app/AppContext';
 
 function RegistrationPage() {
 
-const { setUser } = useContext(appContext)
+const { setUser } = useContext(AppContext)
 
 
   const navigate = useNavigate();

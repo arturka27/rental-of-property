@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosRequest, setAccessToken } from '../../services/axiosinstance';
-import { AppContext } from "../app/AppContext";
+import { AppContext } from '../../app/AppContext';
+
 
 
 function LogoutPage() {
   const navigate = useNavigate();
-const { user, setUser } = useContext(appContext)
+const { user, setUser } = useContext(AppContext)
 
 
   const onHandleLogout = async () => {
