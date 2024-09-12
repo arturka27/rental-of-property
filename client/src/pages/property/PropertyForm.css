@@ -15,8 +15,14 @@
 .form {
     display: flex;
     flex-direction: column;
-    background-color: var(--btn-hover-color)
+    background-color: var(--btn-hover-color);
+    text-align: center;
+    /* align-items: center; */
+}
 
+select option{
+    cursor: pointer;
+    background-color:var(--btn-color);
 }
 
 input, select{
