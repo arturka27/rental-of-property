@@ -68,7 +68,7 @@ function PropertyFormUpdate({ property, setActive }) {
         placeholder="title"
       />
       <input
-        type="text"
+        type="number"
         value={price}
         onChange={(e) => setPrice(+e.target.value)}
         placeholder="title"

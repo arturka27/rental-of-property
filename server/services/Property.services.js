@@ -27,9 +27,9 @@ class PropertyServices {
     }
   };
 
-  static getAllProperties = async () => {
+  static getAllProperties = async (query) => {
     try {
-      const properties = await Property.findAll();
+      const properties = await Property.findAll({ where: query });
       return properties ? properties.map((property) => property.get()) : null;
     } catch ({ message }) {
       console.log(message);

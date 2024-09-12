@@ -5,7 +5,7 @@ const upload = require("../utils/upload");
 
 router.get("/", async (req, res) => {
   try {
-    const properties = await PropertyServices.getAllProperties();
+    const properties = await PropertyServices.getAllProperties(req.query);
     res.status(200).json({ message: "success", properties });
   } catch ({ message }) {
     res.status(500).json({ error: message });
@@ -39,7 +39,6 @@ router.post(
           "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
       } else {
         pathImages = "/img/" + req.file.filename;
-        console.log(pathImages);
       }
 
       const property = await PropertyServices.createProperty({
@@ -94,7 +93,6 @@ router.put(
       }
       res.status(400).json({ message: "Property is not found" });
     } catch ({ message }) {
-      console.log(message);
       res.status(500).json({ error: message });
     }
   }
