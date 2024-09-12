@@ -3,6 +3,7 @@ import ModalWindow from "../../shared/ui/ModalWindow";
 import PropertyItem from "./PropertyItem";
 import PropertyFormAdd from "./PropertyFormAdd";
 import { AppContext } from "../../app/AppContext";
+import './PropertyPage.css'
 
 function PropertyPage({ properties, setProperties }) {
   const [active, setActive] = useState(false);
@@ -14,14 +15,14 @@ function PropertyPage({ properties, setProperties }) {
   };
 
   return (
-    <div>
+    <div className="property-page">
       {user && user.isAdmin && (
-        <button onClick={isActive}>Добавить объявление</button>
+        <button onClick={isActive} className="add-property">Добавить объявление</button>
       )}
       <ModalWindow active={active} setActive={setActive}>
         <PropertyFormAdd setProperties={setProperties} />
       </ModalWindow>
-
+      <div  className="properties">
       {properties &&
         properties.map((property) => (
           <PropertyItem
@@ -30,6 +31,7 @@ function PropertyPage({ properties, setProperties }) {
             setProperties={setProperties}
           />
         ))}
+      </div>
     </div>
   );
 }

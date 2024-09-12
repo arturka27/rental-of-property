@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
+import "./PropertyForm.css"
 
 function PropertyFormAdd({ setProperties }) {
   const [categoryId, setCategoryId] = useState(0);
@@ -37,7 +38,7 @@ function PropertyFormAdd({ setProperties }) {
     }
   };
   return (
-    <form onSubmit={onHandleSubmit}>
+    <form onSubmit={onHandleSubmit} className="form">
       <select onChange={(e) => setCategoryId(+e.target.value)}>
         {categories &&
           categories.map((category) => (
