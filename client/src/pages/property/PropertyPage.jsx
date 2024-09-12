@@ -7,7 +7,7 @@ import { AppContext } from "../../app/AppContext";
 function PropertyPage({ properties, setProperties }) {
   const [active, setActive] = useState(false);
 
-  const { user } = useContext(AppContext);
+  const { user, likedProperties } = useContext(AppContext);
 
   const isActive = () => {
     setActive((prev) => !prev);
@@ -28,6 +28,7 @@ function PropertyPage({ properties, setProperties }) {
             key={property.id}
             property={property}
             setProperties={setProperties}
+            state={likedProperties?.includes(property.id)}
           />
         ))}
     </div>

@@ -6,6 +6,7 @@ import { axiosRequest } from "../../services/axiosinstance";
 
 function PropertyItem({ property, setProperties }) {
   const [active, setActive] = useState(false);
+ 
 
   const { user } = useContext(AppContext);
 
@@ -35,10 +36,15 @@ function PropertyItem({ property, setProperties }) {
         <p>{property.price}</p>
       </div>
       <div>
-        {user && user.isAdmin && (
+        {user && user.isAdmin ? (
+          <>
           <button onClick={onHandleDelete}>Удалить</button>
-        )}
-        {user && user.isAdmin && <button onClick={isActive}>Обновить</button>}
+          <button onClick={isActive}>Обновить</button>
+          </>
+        ) : (
+          <></>
+        )
+      }
         <ModalWindow active={active} setActive={setActive}>
           <PropertyFormUpdate
             property={property}
