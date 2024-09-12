@@ -6,12 +6,17 @@ import { axiosRequest } from "../../services/axiosinstance";
 import "./PropertyItem.css";
 import { useNavigate } from "react-router-dom";
 
+
 function PropertyItem({ property }) {
   const [active, setActive] = useState(false);
-
-  const { user, setProperties, categories } = useContext(AppContext);
-
-  const navigate = useNavigate();
+  const {
+    user,
+    setProperties,
+    likedProperties,
+    setLikedProperties,
+    categories,
+  } = useContext(AppContext);
+    const navigate = useNavigate();
 
   const onHandleDelete = async () => {
     try {
@@ -23,6 +28,33 @@ function PropertyItem({ property }) {
       console.log(error);
     }
   };
+
+  const addToLiked = async (propertyId) => {
+    try {
+      const response = await axiosRequest.post("/favorites", { propertyId });
+
+      if (response.status === 200) {
+        // setLiked(data.likeState);
+        setLikedProperties((prev) => [...prev, response.data.likedProperty]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const delFromLiked = async (propertyId) => {
+    try {
+      const response = await axiosRequest.delete(`/favorites/${propertyId}`);
+      if (response.status === 200) {
+        setLikedProperties((prev) =>
+          prev.filter((prop) => prop.id !== propertyId)
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(likedProperties);
 
   const isActive = () => {
     setActive((prev) => !prev);
@@ -43,16 +75,35 @@ function PropertyItem({ property }) {
         <p className="property-info">Стоимость в месяц: {property.price}₽</p>
       </div>
       <div className="buttons-edit">
-        {user && user.isAdmin && (
+        {user && user.isAdmin ? (
           <>
-            <button onClick={onHandleDelete} className="property-button">
-              Удалить объявление
+            <button className="property-button" onClick={onHandleDelete}>
+              Удалить
             </button>
-            <button onClick={isActive} className="property-button">
-              Обновить объявление
+            <button className="property-button" onClick={isActive}>
+              Обновить
+            </button>
+          </>
+        ) : likedProperties.find(({ id }) => id === property.id) ? (
+          <>
+            <button
+              className="property-button liked"
+              onClick={() => delFromLiked(property.id)}
+            >
+              Удалить из избранного
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className="property-button"
+              onClick={() => addToLiked(property.id)}
+            >
+              Добавить в избранное
             </button>
           </>
         )}
+
         <button
           onClick={() => {
             navigate(`/properties/${property.id}`);

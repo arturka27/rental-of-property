@@ -11,11 +11,23 @@ module.exports = {
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }, 
+        onDelete: 'CASCADE',
+        onUpdate: "CASCADE",
       },
       propertyId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Properties',
+          key: 'id'
+        }, 
+        onDelete: 'CASCADE',
+        onUpdate: "CASCADE",
       },
       createdAt: {
         defaultValue:Sequelize.fn('NOW'),

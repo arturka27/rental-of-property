@@ -37,7 +37,7 @@ const { setUser } = useContext(AppContext)
       if (data.message === "success") {
         setUser(data.user);
         setAccessToken(data.accessToken);
-        navigate("/");
+        navigate("/properties");
         return;
       }
     } catch (message) {

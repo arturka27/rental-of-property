@@ -12,7 +12,8 @@ function HeaderPage() {
   };
   return (
     <div className="header">
-      <img className="logo" src="../../../public/image/logo.png" alt="logo" width={'100px'}/>
+       <NavLink className="navlinkHome"to="/properties"><img className="logo" src="../../../public/image/logo.png" alt="logo" width={'100px'}/></NavLink>
+      
       <button onClick={onHandleShow}>категории</button>
       {showCategories && (
         <ul className="categories">
@@ -22,7 +23,7 @@ function HeaderPage() {
       {user ? (
         <div className="log-logout">
           <h2 className="hello-text">Привет {user.name}!</h2>
-          <NavLink className="navlink"to="/favorites">избранное</NavLink>
+          {!user.isAdmin && (<NavLink className="navlink"to="/favorites">избранное</NavLink>)}
           <NavLink className="navlink" to="/logout">выход</NavLink>
         </div>
       ) : (

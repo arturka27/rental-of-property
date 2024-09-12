@@ -11,7 +11,7 @@ function PropertyPage() {
   const [categryId, setCategoryId] = useSearchParams();
   const param = categryId.get("categoryId");
 
-  const { user, properties, setProperties, categories } =
+  const { user, properties, setProperties, categories,likedProperties } =
     useContext(AppContext);
 
   let filtredProperties = [...properties];
@@ -20,9 +20,9 @@ function PropertyPage() {
     filtredProperties = filtredProperties.filter(
       (prop) => prop.categoryId === +param
     );
-    console.log(properties);
-    console.log(filtredProperties);
+
   }
+
 
   const isActive = () => {
     setActive((prev) => !prev);
@@ -38,12 +38,11 @@ function PropertyPage() {
       <ModalWindow active={active} setActive={setActive}>
         <PropertyFormAdd setActive={setActive} />
       </ModalWindow>
-
-      <div className="properties">
-        {filtredProperties &&
-          filtredProperties.map((property) => (
-            <PropertyItem key={property.id} property={property} />
-          ))}
+      <div  className="properties">
+      {filtredProperties &&
+        filtredProperties.map((property) => (
+          <PropertyItem key={property.id} property={property} />
+        ))}
       </div>
     </div>
   );

@@ -7,6 +7,8 @@ const initState = {
   setProperties: () => {},
   categories: [],
   setCategories: () => {},
+     likedProperties: [],
+  setLikedProperties: () => {}
 };
 
 export const AppContext = createContext(initState);

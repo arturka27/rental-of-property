@@ -49,7 +49,7 @@ const { setUser } = useContext(AppContext)
       if (data.message === "success") {
         setAccessToken(data.accessToken);
         setUser(data.user);
-        navigate("/");
+        navigate("/properties");
         return;
       }
     } catch (err) {

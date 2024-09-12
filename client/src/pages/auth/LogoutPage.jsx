@@ -17,7 +17,7 @@ const { user, setUser } = useContext(AppContext)
       if (data.message === 'success') {
         setAccessToken(data.accessToken);
         setUser(null);
-        navigate('/')
+        navigate('/properties')
       }
     } catch (error) {
         console.log(error);
