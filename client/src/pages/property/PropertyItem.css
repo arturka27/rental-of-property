@@ -38,14 +38,14 @@
   font-weight: 600;
   font-size: 20px;
   border: none; /* Убираем рамку */
-  padding: 10px 35px;
+  padding: 8px 100px;
   border-radius: 5px; /* Скругление углов */
  /* Курсор при наведении */
   transition: 0.3s;
   background-color: var(--btn-color);
   /* margin: auto; */
   border: 2px solid transparent;
-  margin: 2%;
+  margin: 1% 2%;
   white-space: nowrap;
 }
 

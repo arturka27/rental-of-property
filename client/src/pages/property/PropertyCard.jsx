@@ -4,6 +4,7 @@ import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalWindow from "../../shared/ui/ModalWindow";
+import "./PropertyCard.css";
 
 function PropertyCard() {
   const [active, setActive] = useState(false);
@@ -44,48 +45,50 @@ function PropertyCard() {
     setActive((prev) => !prev);
   };
   return (
-    <div className="property">
-      <h3 className="property-title">{property.title}</h3>
-      <div>
-        <div>
-          <img
-            className="property-photo"
-            src={property.photo}
-            alt="property photo"
-            width={"400px"}
-          />
-        </div>
-        <p className="property-info">Адрес: {property.address}</p>
-        <p className="property-info">Описание: {property.description}</p>
-        <p className="property-info">Стоимость в месяц: {property.price}₽</p>
+    <div className="property-card">
+      <div className="card-photo">
+        <img
+          className="property-photo"
+          src={property.photo}
+          alt="property photo"
+          width={"400px"}
+        />
       </div>
-      <div className="buttons-edit">
-        {user && user.isAdmin && (
-          <>
-            <button onClick={onHandleDelete} className="property-button">
-              Удалить объявление
-            </button>
-            <button onClick={isActive} className="property-button">
-              Обновить объявление
-            </button>
-          </>
-        )}
-        <button
-          onClick={() => {
-            navigate(-1);
-          }}
-          className="property-button"
-        >
-          Назад
-        </button>
-        <ModalWindow active={active} setActive={setActive}>
-          <PropertyFormUpdate
-            categories={categories}
-            property={property}
-            setProperties={setProperties}
-            setActive={setActive}
-          />
-        </ModalWindow>
+      <div className="card-info">
+        <h3 className="card-property-title">{property.title}</h3>
+        <div>
+          <p className="card-property-info">Адрес: {property.address}</p>
+          <p className="card-property-info">Описание: {property.description}</p>
+          <p className="card-property-info">Стоимость в месяц: {property.price}₽</p>
+        </div>
+        <div className="buttons-edit">
+          {user && user.isAdmin && (
+            <>
+              <button onClick={onHandleDelete} className="property-button">
+                Удалить объявление
+              </button>
+              <button onClick={isActive} className="property-button">
+                Обновить объявление
+              </button>
+            </>
+          )}
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+            className="property-button"
+          >
+            Назад
+          </button>
+          <ModalWindow active={active} setActive={setActive}>
+            <PropertyFormUpdate
+              categories={categories}
+              property={property}
+              setProperties={setProperties}
+              setActive={setActive}
+            />
+          </ModalWindow>
+        </div>
       </div>
     </div>
   );
