@@ -23,7 +23,7 @@ function HeaderPage() {
       {user ? (
         <div className="log-logout">
           <h2 className="hello-text">Привет {user.name}!</h2>
-          <NavLink className="navlink"to="/favorites">избранное</NavLink>
+          {!user.isAdmin && (<NavLink className="navlink"to="/favorites">избранное</NavLink>)}
           <NavLink className="navlink" to="/logout">выход</NavLink>
         </div>
       ) : (

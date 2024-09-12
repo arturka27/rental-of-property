@@ -43,7 +43,7 @@ function App() {
       console.log(response.data.message);
     }
 
-  
+  }
 
   const getLikedProperties = async () => {
     try {
@@ -59,7 +59,6 @@ function App() {
     }
   }
 
-  };
 
 
   const checkUser = async () => {
@@ -79,11 +78,9 @@ function App() {
     getAllCategories();
     getAllProperties();
     checkUser();
-      getLikedProperties()
+    getLikedProperties()
   }, []);
 
-
-  console.log(likedProperties, "likedProperties");
   
   return (
     <>
