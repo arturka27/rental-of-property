@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { axiosRequest, setAccessToken } from "../services/axiosinstance";
 import PropertyByCategoryPage from "../pages/property/PropertyByCategoryPage";
 import FooterPage from "../widgets/footer/FooterPage";
+import ErrorPage from "../pages/error/ErrorPage";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -76,6 +77,7 @@ function App() {
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/logout" element={<LogoutPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <FooterPage />
       </AppContext.Provider>
