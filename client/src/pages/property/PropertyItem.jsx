@@ -29,7 +29,7 @@ function PropertyItem({ property }) {
       <h3 className="property-title">{property.title}</h3>
       <div>
         <div>
-          <img  className="property-photo" src={property.photo} alt="property photo" width={"500px"} />
+          <img  className="property-photo" src={property.photo} alt="property photo" width={"400px"} />
         </div>
         <p className="property-info">Адрес: {property.address}</p>
         <p className="property-info">Стоимость в месяц: {property.price}₽</p>

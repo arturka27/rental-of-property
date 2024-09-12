@@ -44,12 +44,12 @@ function PropertyFormAdd({ setActive }) {
     }
   };
   return (
-    <form onSubmit={onHandleCreateProperty}>
+    <form onSubmit={onHandleCreateProperty} className="form">
       <h2>Добавление объявления:</h2>
-      <select onChange={(e) => setCategoryId(+e.target.value)}>
+      <select onChange={(e) => setCategoryId(+e.target.value)} className="select">
         {categories &&
           categories.map((category) => (
-            <option value={category.id} key={category.id}>
+            <option value={category.id} key={category.id} className="option">
               {category.title}
             </option>
           ))}
@@ -58,26 +58,26 @@ function PropertyFormAdd({ setActive }) {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="title"
+        placeholder="название"
       />
       <input
         type="number"
         value={price}
         onChange={(e) => setPrice(+e.target.value)}
-        placeholder="title"
+        placeholder="цена"
       />
       <input
         type="text"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="title"
+        placeholder="описание"
       />
       <input type="file" onChange={(e) => setPhoto(e.target.files[0])} />
       <input
         type="text"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="info"
+        placeholder="адрес"
       />
 
       <button type="submit">Опубликовать</button>

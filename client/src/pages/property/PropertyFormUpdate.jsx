@@ -48,7 +48,7 @@ function PropertyFormUpdate({ property, setActive }) {
   };
 
   return (
-    <form onSubmit={onHandleUpdateProperty}>
+    <form onSubmit={onHandleUpdateProperty} className="form">
       <h2>Обновление объявления:</h2>
       <select
         onChange={(e) => setCategoryId(+e.target.value)}
