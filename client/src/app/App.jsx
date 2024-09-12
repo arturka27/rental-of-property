@@ -10,6 +10,7 @@ import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
 import { axiosRequest, setAccessToken } from "../services/axiosinstance";
 import PropertyByCategoryPage from "../pages/property/PropertyByCategoryPage";
+import FooterPage from "../widgets/footer/FooterPage";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -72,11 +73,11 @@ function App() {
         <Routes>
           <Route path="/favorites" element={<FavoritePage />} />
           <Route path="/properties" element={<PropertyPage />} />
-          <Route path="/properties/:categoryId" element={<PropertyByCategoryPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/logout" element={<LogoutPage />} />
         </Routes>
+        <FooterPage />
       </AppContext.Provider>
     </>
   );

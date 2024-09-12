@@ -3,6 +3,7 @@ import PropertyFormUpdate from "./PropertyFormUpdate";
 import ModalWindow from "../../shared/ui/ModalWindow";
 import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
+import './PropertyItem.css'
 
 function PropertyItem({ property }) {
   const [active, setActive] = useState(false);
@@ -24,21 +25,21 @@ function PropertyItem({ property }) {
     setActive((prev) => !prev);
   };
   return (
-    <div>
-      <h3>{property.title}</h3>
+    <div className="property">
+      <h3 className="property-title">{property.title}</h3>
       <div>
         <div>
-          <img src={property.photo} alt="property photo" width={"500px"} />
+          <img  className="property-photo" src={property.photo} alt="property photo" width={"500px"} />
         </div>
-        <p>Адрес: {property.address}</p>
-        <p>Стоимость в месяц: {property.price}§</p>
+        <p className="property-info">Адрес: {property.address}</p>
+        <p className="property-info">Стоимость в месяц: {property.price}₽</p>
       </div>
       <div>
         {user && user.isAdmin && (
-          <>
-            <button onClick={onHandleDelete}>Удалить объявление</button>
-            <button onClick={isActive}>Обновить объявление</button>
-          </>
+           <>
+           <button onClick={onHandleDelete} className="property-button">Удалить объявление</button>
+           <button onClick={isActive} className="property-button">Обновить объявление</button>
+         </>
         )}
         <ModalWindow active={active} setActive={setActive}>
           <PropertyFormUpdate
