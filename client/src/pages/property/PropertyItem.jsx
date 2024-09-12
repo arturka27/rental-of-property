@@ -4,6 +4,8 @@ import ModalWindow from "../../shared/ui/ModalWindow";
 import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
 import "./PropertyItem.css";
+import { useNavigate } from "react-router-dom";
+
 
 function PropertyItem({ property }) {
   const [active, setActive] = useState(false);
@@ -14,6 +16,8 @@ function PropertyItem({ property }) {
     setLikedProperties,
     categories,
   } = useContext(AppContext);
+    const navigate = useNavigate();
+
   const onHandleDelete = async () => {
     try {
       const response = await axiosRequest.delete(`/properties/${property.id}`);
@@ -100,6 +104,14 @@ function PropertyItem({ property }) {
           </>
         )}
 
+        <button
+          onClick={() => {
+            navigate(`/properties/${property.id}`);
+          }}
+          className="property-button"
+        >
+          Подробнее
+        </button>
         <ModalWindow active={active} setActive={setActive}>
           <PropertyFormUpdate
             categories={categories}
