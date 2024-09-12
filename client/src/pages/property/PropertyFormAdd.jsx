@@ -3,17 +3,16 @@ import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
 import "./PropertyForm.css"
 
-function PropertyFormAdd({ setProperties }) {
-  const [categoryId, setCategoryId] = useState(0);
+function PropertyFormAdd({ setActive }) {
+  const { categories, setProperties } = useContext(AppContext);
+  const [categoryId, setCategoryId] = useState(1);
   const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState();
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
   const [address, setAddress] = useState("");
 
-  const { categories } = useContext(AppContext);
-
-  const onHandleSubmit = async (e) => {
+  const onHandleCreateProperty = async (e) => {
     try {
       e.preventDefault();
 
@@ -32,13 +31,21 @@ function PropertyFormAdd({ setProperties }) {
 
       if (response.status === 201) {
         setProperties((prev) => [...prev, response.data.property]);
+        setCategoryId("");
+        setTitle("");
+        setPrice("");
+        setDescription("");
+        setPhoto("");
+        setAddress("");
+        setActive(false);
       }
     } catch ({ response }) {
       console.log(response.data.message);
     }
   };
   return (
-    <form onSubmit={onHandleSubmit} className="form">
+    <form onSubmit={onHandleCreateProperty}>
+      <h2>Добавление объявления:</h2>
       <select onChange={(e) => setCategoryId(+e.target.value)}>
         {categories &&
           categories.map((category) => (
@@ -54,7 +61,7 @@ function PropertyFormAdd({ setProperties }) {
         placeholder="title"
       />
       <input
-        type="text"
+        type="number"
         value={price}
         onChange={(e) => setPrice(+e.target.value)}
         placeholder="title"

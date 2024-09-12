@@ -5,10 +5,10 @@ import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
 import './PropertyItem.css'
 
-function PropertyItem({ property, setProperties }) {
+function PropertyItem({ property }) {
   const [active, setActive] = useState(false);
 
-  const { user } = useContext(AppContext);
+  const { user, setProperties, categories } = useContext(AppContext);
 
   const onHandleDelete = async () => {
     try {
@@ -28,22 +28,26 @@ function PropertyItem({ property, setProperties }) {
     <div className="property">
       <h3 className="property-title">{property.title}</h3>
       <div>
-        <div className="property-photo">
-          <img src={property.photo} alt="property photo" width="100%"/>
+        <div>
+          <img  className="property-photo" src={property.photo} alt="property photo" width={"500px"} />
         </div>
-        <p className="property-info">{property.address}</p>
-        <p className="property-info">{property.description}</p>
-        <p className="property-info">{property.price}</p>
+        <p className="property-info">Адрес: {property.address}</p>
+        <p className="property-info">Описание: {property.description}</p>
+        <p className="property-info">Стоимость в месяц: {property.price}₽</p>
       </div>
       <div>
         {user && user.isAdmin && (
-          <button onClick={onHandleDelete} className="property-button">Удалить</button>
+          <button onClick={onHandleDelete} className="property-button">Удалить объявление</button>
         )}
-        {user && user.isAdmin && <button onClick={isActive} className="property-button">Обновить</button>}
+        {user && user.isAdmin && (
+          <button onClick={isActive}  className="property-button">Обновить объявление</button>
+        )}
         <ModalWindow active={active} setActive={setActive}>
           <PropertyFormUpdate
+            categories={categories}
             property={property}
             setProperties={setProperties}
+            setActive={setActive}
           />
         </ModalWindow>
       </div>

@@ -46,8 +46,16 @@ class PropertyServices {
   };
 
   static updateProperty = async (data) => {
-    const { categoryId, userId, title, price, description, photo, address } =
-      data;
+    const {
+      id,
+      userId,
+      categoryId,
+      title,
+      price,
+      description,
+      photo,
+      address,
+    } = data;
     const property = await Property.findOne({ where: { id, userId } });
     if (property) {
       return property.update({
