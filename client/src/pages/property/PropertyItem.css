@@ -39,10 +39,17 @@
     background-color: var(--btn-color);
     /* margin: auto; */
     border: 2px solid transparent;
-    margin: 2% 22%;
+    margin: 2% ;
+    white-space: nowrap
 }
 
 .property-button:hover {
     background-color: var(--btn-hover-color);
     border: 2px solid var(--bd-color);
+}
+
+.buttons-edit {
+    display: flex;
+    flex-direction: column;
+
 }

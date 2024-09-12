@@ -34,7 +34,7 @@ function PropertyItem({ property }) {
         <p className="property-info">Адрес: {property.address}</p>
         <p className="property-info">Стоимость в месяц: {property.price}₽</p>
       </div>
-      <div>
+      <div className="buttons-edit">
         {user && user.isAdmin && (
            <>
            <button onClick={onHandleDelete} className="property-button">Удалить объявление</button>
