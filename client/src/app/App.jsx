@@ -9,6 +9,7 @@ import LogoutPage from "../pages/auth/LogoutPage";
 import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
 import { axiosRequest, setAccessToken } from "../services/axiosinstance";
+import FooterPage from "../widgets/footer/FooterPage";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -76,6 +77,7 @@ function App() {
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/logout" element={<LogoutPage />} />
         </Routes>
+        <FooterPage/>
       </AppContext.Provider>
     </>
   );

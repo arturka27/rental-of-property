@@ -2,6 +2,7 @@ import React, { useContext, useState } from'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosRequest, setAccessToken } from '../../services/axiosinstance';
 import { AppContext } from '../../app/AppContext';
+import './LogRegPage.css'
 
 function RegistrationPage() {
 
@@ -60,7 +61,7 @@ const { setUser } = useContext(AppContext)
   return (
     <div className="mainForm">
       <h2>Создать профиль</h2>
-      <form onSubmit={onHandleSubmit}>
+      <form onSubmit={onHandleSubmit} className='regLogForm'>
           <input
             required
             className="maininput"

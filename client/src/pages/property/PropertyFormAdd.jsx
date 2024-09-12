@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
+import "./PropertyForm.css"
 
 function PropertyFormAdd({ setActive }) {
   const { categories, setProperties } = useContext(AppContext);

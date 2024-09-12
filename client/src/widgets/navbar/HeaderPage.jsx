@@ -11,24 +11,24 @@ function HeaderPage() {
   };
   return (
     <div className="header">
-      <img src="../../../public/image/logo.png" alt="logo" width={'100px'}/>
+      <img className="logo" src="../../../public/image/logo.png" alt="logo" width={'100px'}/>
       <button onClick={onHandleShow}>категории</button>
       {showCategories && (
         <ul className="categories">
           <li>
-            <NavLink to="/categories/1">Дома</NavLink>
+            <NavLink to="/properties/1" >Дома</NavLink>
           </li>
           <li>
-            <NavLink to="/categories/2">Квартиры</NavLink>
+            <NavLink to="/properties/2" >Квартиры</NavLink>
           </li>
           <li>
-            <NavLink to="/categories/3">Комнаты</NavLink>
+            <NavLink to="/properties/3" >Комнаты</NavLink>
           </li>
         </ul>
       )}
       {user ? (
         <div className="log-logout">
-          <h2 >Привет {user.name}!</h2>
+          <h2 className="hello-text">Привет {user.name}!</h2>
           <NavLink className="navlink"to="/favorites">избранное</NavLink>
           <NavLink className="navlink" to="/logout">выход</NavLink>
         </div>
