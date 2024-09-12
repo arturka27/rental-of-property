@@ -11,7 +11,7 @@ function PropertyPage() {
   const [categryId, setCategoryId] = useSearchParams();
   const param = categryId.get("categoryId");
 
-  const { user, properties, setProperties, categories,likedProperties } =
+  const { user, properties, setProperties, categories, likedProperties } =
     useContext(AppContext);
 
   let filtredProperties = [...properties];
