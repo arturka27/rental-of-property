@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HeaderPage from "../widgets/navbar/HeaderPage";
 import FavoritePage from "../pages/favorute/FavoritePage";
-import CategoriesPage from "../pages/categories/CategoriesPage";
+// import CategoriesPage from "../pages/categories/CategoriesPage";
 import PropertyPage from "../pages/property/PropertyPage";
 import AuthorizationPage from "../pages/auth/AuthorizationPage";
 import RegistrationPage from "../pages/auth/RegistrationPage";
@@ -9,7 +9,7 @@ import LogoutPage from "../pages/auth/LogoutPage";
 import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
 import { axiosRequest, setAccessToken } from "../services/axiosinstance";
-import PropertyByCategoryPage from "../pages/property/PropertyByCategoryPage";
+// import PropertyByCategoryPage from "../pages/property/PropertyByCategoryPage";
 import FooterPage from "../widgets/footer/FooterPage";
 import ErrorPage from "../pages/error/ErrorPage";
 

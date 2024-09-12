@@ -7,13 +7,13 @@ module.exports = {
       "Categories",
       [
         {
-          title: "Дом",
+          title: "Дома",
         },
         {
-          title: "Квартира",
+          title: "Квартиры",
         },
         {
-          title: "Комната",
+          title: "Комнаты",
         },
       ],
       {}
