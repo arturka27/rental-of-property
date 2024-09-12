@@ -7,7 +7,6 @@
 }
 
 * {
-    /* background-color: #B365D4; */
   margin: 0;
   padding: 0;
   font-family: "Advent Pro", sans-serif;
@@ -15,7 +14,17 @@
   color: var(--main-color);
   font-weight: 600;
   font-size: 20px;
+  cursor: url('https://cdn.custom-cursor.com/db/cursor/32/Pink_cursor.png'), auto;
 }
+
+/* Классический курсор для обычных элементов */
+
+/* Курсор pointer для интерактивных элементов */
+a, button, form input{
+  cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Pink_Pointer.png'), pointer;
+}
+
+
 ::selection {
 
   background: var(--btn-color) /* Safari */
