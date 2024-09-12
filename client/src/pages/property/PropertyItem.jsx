@@ -65,6 +65,7 @@ function PropertyItem({ property }) {
             src={property.photo}
             alt="property photo"
             width={"400px"}
+            height={'250px'}
           />
         </div>
         <p className="property-info">Адрес: {property.address}</p>

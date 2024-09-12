@@ -20,8 +20,13 @@
 .property-title,
 .property-info,
 .property-photo {
+    margin-top: 10px;
   background-color: var(--btn-hover-color);
   text-align: center;
+}
+
+.property-title {
+    font-size: 25px;
 }
 
 .property img {
@@ -35,7 +40,7 @@
   border: none; /* Убираем рамку */
   padding: 10px 35px;
   border-radius: 5px; /* Скругление углов */
-  cursor: pointer; /* Курсор при наведении */
+ /* Курсор при наведении */
   transition: 0.3s;
   background-color: var(--btn-color);
   /* margin: auto; */

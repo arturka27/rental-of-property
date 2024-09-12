@@ -20,6 +20,7 @@ function HeaderPage() {
            {categories.map((category)=> ( <CategoriesPage key={category.id} category={category}/>))}
         </ul>
       )}
+      <NavLink className="title" to={'/properties'}><h1 >Квартирный Базар</h1></NavLink>
       {user ? (
         <div className="log-logout">
           <h2 className="hello-text">Привет {user.name}!</h2>
@@ -32,6 +33,7 @@ function HeaderPage() {
           <NavLink className="navlink" to="/registration">регистрация</NavLink>
         </div>
       )}
+
     </div>
   );
 }
