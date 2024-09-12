@@ -12,6 +12,7 @@ import { axiosRequest, setAccessToken } from "../services/axiosinstance";
 // import PropertyByCategoryPage from "../pages/property/PropertyByCategoryPage";
 import FooterPage from "../widgets/footer/FooterPage";
 import ErrorPage from "../pages/error/ErrorPage";
+import PropertyCard from "../pages/property/PropertyCard";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -74,6 +75,7 @@ function App() {
         <Routes>
           <Route path="/favorites" element={<FavoritePage />} />
           <Route path="/properties" element={<PropertyPage />} />
+          <Route path="/properties/:propertyId" element={<PropertyCard />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/logout" element={<LogoutPage />} />

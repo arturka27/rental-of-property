@@ -61,7 +61,7 @@ router.post(
 router.put(
   "/:id",
   verifyAccessToken,
-  upload.single("image"),
+  upload.single("photo"),
   async (req, res) => {
     try {
       const userId = res.locals.user.id;

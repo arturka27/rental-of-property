@@ -1,28 +1,44 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropertyFormUpdate from "./PropertyFormUpdate";
-import ModalWindow from "../../shared/ui/ModalWindow";
 import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
-import "./PropertyItem.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import ModalWindow from "../../shared/ui/ModalWindow";
 
-function PropertyItem({ property }) {
+function PropertyCard() {
   const [active, setActive] = useState(false);
-
+  const [property, setProperty] = useState({});
   const { user, setProperties, categories } = useContext(AppContext);
+  const { propertyId } = useParams();
 
   const navigate = useNavigate();
+
+  const onHandleGetProperty = async () => {
+    try {
+      const response = await axiosRequest.get(`/properties/${propertyId}`);
+      if (response.status === 200) {
+        setProperty(response.data.property);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const onHandleDelete = async () => {
     try {
       const response = await axiosRequest.delete(`/properties/${property.id}`);
       if (response.status === 200) {
         setProperties((prev) => prev.filter((prop) => prop.id !== property.id));
+        navigate(-1);
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    onHandleGetProperty();
+  }, []);
 
   const isActive = () => {
     setActive((prev) => !prev);
@@ -40,6 +56,7 @@ function PropertyItem({ property }) {
           />
         </div>
         <p className="property-info">Адрес: {property.address}</p>
+        <p className="property-info">Описание: {property.description}</p>
         <p className="property-info">Стоимость в месяц: {property.price}₽</p>
       </div>
       <div className="buttons-edit">
@@ -55,11 +72,11 @@ function PropertyItem({ property }) {
         )}
         <button
           onClick={() => {
-            navigate(`/properties/${property.id}`);
+            navigate(-1);
           }}
           className="property-button"
         >
-          Подробнее
+          Назад
         </button>
         <ModalWindow active={active} setActive={setActive}>
           <PropertyFormUpdate
@@ -74,4 +91,4 @@ function PropertyItem({ property }) {
   );
 }
 
-export default PropertyItem;
+export default PropertyCard;
