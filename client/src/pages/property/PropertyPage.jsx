@@ -27,8 +27,7 @@ function PropertyPage({ properties, setProperties }) {
           <PropertyItem
             key={property.id}
             property={property}
-            setProperties={setProperties}
-            state={likedProperties?.includes(property.id)}
+            
           />
         ))}
     </div>

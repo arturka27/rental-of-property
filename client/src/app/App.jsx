@@ -25,12 +25,17 @@ function App() {
       console.log(response.data.message);
     }
   }
+  console.log("user", user);
+  
 
   const getLikedProperties = async () => {
     try {
       const {data} = await axiosRequest.get('/favorites') 
+      console.log(data.likes);
+      
       if (data.message === "success") {
-        setLikedProperties(data.likes)
+        const properties = data.likes[0].Properties
+        setLikedProperties(properties)
       }
     } catch ({response}) {
       console.log(response.data.message);
@@ -55,7 +60,7 @@ function App() {
     getLikedProperties()
   },[])
 
-  console.log(likedProperties);
+  console.log(likedProperties, "likedProperties");
   
   return (
     <>

@@ -26,7 +26,9 @@ class FavoritesService {
 
     static deleteLike = async (userId, propertyId) => {
         const delLike = await Favorite.destroy({ where: { userId, propertyId } })
-        return delLike ? delLike.get() : null;
+        console.log(delLike);
+        
+        return delLike ? delLike : null;
     }
 }
 
