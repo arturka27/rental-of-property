@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { axiosRequest } from "../../services/axiosinstance";
 import { AppContext } from "../../app/AppContext";
 
-function PropertyFormUpdate({ property, setProperties }) {
+function PropertyFormUpdate({ property, setActive }) {
+  const { categories, setProperties } = useContext(AppContext);
   const [categoryId, setCategoryId] = useState(property.categoryId);
   const [title, setTitle] = useState(property.title);
   const [price, setPrice] = useState(property.price);
@@ -10,21 +11,26 @@ function PropertyFormUpdate({ property, setProperties }) {
   const [photo, setPhoto] = useState(property.photo);
   const [address, setAddress] = useState(property.address);
 
-  const { categories } = useContext(AppContext);
-
-  const onHandleSubmit = async (e) => {
+  const onHandleUpdateProperty = async (e) => {
     try {
       e.preventDefault();
+      const data = new FormData();
 
-      const response = await axiosRequest.put(`/properties/${property.id}`, {
-        categoryId,
-        title,
-        price,
-        description,
-        photo,
-        address,
-      });
-      // console.log(response);
+      data.append("categoryId", categoryId);
+      data.append("title", title);
+      data.append("price", price);
+      data.append("description", description);
+      data.append("photo", photo);
+      data.append("address", address);
+
+      const response = await axiosRequest.put(
+        `/properties/${property.id}`,
+        data,
+        {
+          "Content-Type": "multipart/form-data",
+        }
+      );
+      console.log(response.data);
       if (response.status === 200) {
         setProperties((prev) =>
           prev.map((prop) =>
@@ -33,14 +39,20 @@ function PropertyFormUpdate({ property, setProperties }) {
               : prop
           )
         );
+        setActive(false);
       }
     } catch ({ response }) {
       console.log(response.data.message);
     }
   };
+
   return (
-    <form onSubmit={onHandleSubmit}>
-      <select onChange={(e) => setCategoryId(+e.target.value)}>
+    <form onSubmit={onHandleUpdateProperty}>
+      <h2>Обновление объявления:</h2>
+      <select
+        onChange={(e) => setCategoryId(+e.target.value)}
+        value={categoryId}
+      >
         {categories &&
           categories.map((category) => (
             <option value={category.id} key={category.id}>
