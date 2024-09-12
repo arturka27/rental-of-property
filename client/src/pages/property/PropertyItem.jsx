@@ -31,15 +31,14 @@ function PropertyItem({ property }) {
           <img src={property.photo} alt="property photo" width={"500px"} />
         </div>
         <p>Адрес: {property.address}</p>
-        <p>Описание: {property.description}</p>
-        <p>Стоимость в месяц: {property.price}₽</p>
+        <p>Стоимость в месяц: {property.price}§</p>
       </div>
       <div>
         {user && user.isAdmin && (
-          <button onClick={onHandleDelete}>Удалить объявление</button>
-        )}
-        {user && user.isAdmin && (
-          <button onClick={isActive}>Обновить объявление</button>
+          <>
+            <button onClick={onHandleDelete}>Удалить объявление</button>
+            <button onClick={isActive}>Обновить объявление</button>
+          </>
         )}
         <ModalWindow active={active} setActive={setActive}>
           <PropertyFormUpdate

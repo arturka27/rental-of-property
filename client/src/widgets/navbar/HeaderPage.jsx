@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AppContext } from "../../app/AppContext";
 import './HeaderPage.css'
+import CategoriesPage from "../../pages/categories/CategoriesPage";
 function HeaderPage() {
   const [showCategories, setShowCategories] = useState(false);
-  const {user} = useContext(AppContext)
+  const {user, categories} = useContext(AppContext)
 
   const onHandleShow = () => {
     setShowCategories((prev) => !prev);
@@ -15,15 +16,9 @@ function HeaderPage() {
       <button onClick={onHandleShow}>категории</button>
       {showCategories && (
         <ul className="categories">
-          <li>
-            <NavLink to="/categories/1">Дома</NavLink>
-          </li>
-          <li>
-            <NavLink to="/categories/2">Квартиры</NavLink>
-          </li>
-          <li>
-            <NavLink to="/categories/3">Комнаты</NavLink>
-          </li>
+          
+          {categories.map((category)=> ( <CategoriesPage key={category.id} category={category}/>))}
+          
         </ul>
       )}
       {user ? (

@@ -9,6 +9,7 @@ import LogoutPage from "../pages/auth/LogoutPage";
 import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
 import { axiosRequest, setAccessToken } from "../services/axiosinstance";
+import PropertyByCategoryPage from "../pages/property/PropertyByCategoryPage";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -70,8 +71,8 @@ function App() {
         <HeaderPage />
         <Routes>
           <Route path="/favorites" element={<FavoritePage />} />
-          <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/properties" element={<PropertyPage />} />
+          <Route path="/properties/:categoryId" element={<PropertyByCategoryPage />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/logout" element={<LogoutPage />} />
