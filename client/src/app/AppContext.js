@@ -3,9 +3,11 @@ import { createContext } from "react";
 const initState = {
   user: undefined,
   setUser: () => {},
-
-
-  likedProperties: [],
+  properties: [],
+  setProperties: () => {},
+  categories: [],
+  setCategories: () => {},
+     likedProperties: [],
   setLikedProperties: () => {}
 };
 

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosRequest, setAccessToken } from "../../services/axiosinstance";
 import { AppContext } from "../../app/AppContext";
+import './LogRegPage.css'
 
 function AuthorizationPage() {
 
@@ -47,9 +48,9 @@ const { setUser } = useContext(AppContext)
 
   return (
     <>
-      <div>
+      <div className="mainForm">
         <h2>Авторизация</h2>
-        <form onSubmit={onHadleSubmit}>
+        <form onSubmit={onHadleSubmit} className="regLogForm">
           <input
             type="email"
             onChange={({ target }) => setEmail(target.value)}

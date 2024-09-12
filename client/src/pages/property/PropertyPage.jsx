@@ -3,33 +3,48 @@ import ModalWindow from "../../shared/ui/ModalWindow";
 import PropertyItem from "./PropertyItem";
 import PropertyFormAdd from "./PropertyFormAdd";
 import { AppContext } from "../../app/AppContext";
+import './PropertyPage.css'
+import { useSearchParams } from "react-router-dom";
 
-function PropertyPage({ properties, setProperties }) {
+function PropertyPage() {
   const [active, setActive] = useState(false);
+  const [categryId, setCategoryId] = useSearchParams();
+  const param = categryId.get("categoryId");
 
-  const { user, likedProperties } = useContext(AppContext);
+  const { user, properties, setProperties, categories,likedProperties } =
+    useContext(AppContext);
+
+  let filtredProperties = [...properties];
+
+  if (param) {
+    filtredProperties = filtredProperties.filter(
+      (prop) => prop.categoryId === +param
+    );
+
+  }
+
 
   const isActive = () => {
     setActive((prev) => !prev);
   };
 
   return (
-    <div>
+    <div className="property-page">
       {user && user.isAdmin && (
-        <button onClick={isActive}>Добавить объявление</button>
+        <button onClick={isActive} className="add-property">Добавить объявление</button>
       )}
       <ModalWindow active={active} setActive={setActive}>
-        <PropertyFormAdd setProperties={setProperties} />
+        <PropertyFormAdd setActive={setActive} />
       </ModalWindow>
 
-      {properties &&
-        properties.map((property) => (
-          <PropertyItem
-            key={property.id}
-            property={property}
-            
-          />
+
+      <div  className="properties">
+      {filtredProperties &&
+        filtredProperties.map((property) => (
+          <PropertyItem key={property.id} property={property} />
+
         ))}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,43 @@
+:root {
+    --bd-color: #4e026e;
+    --btn-color: #d2006b;
+    --btn-hover-color: #e869aa;
+    --bg-page-color: #B365D4;
+  }
+
+*{
+    flex-wrap: nowrap;
+}
+
+.property-page {
+    background-color: var(--bg-page-color);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.add-property {
+    border: none; /* Убираем рамку */
+    padding: 10px 15px; 
+    border-radius: 5px; /* Скругление углов */
+    cursor: pointer; /* Курсор при наведении */
+    transition:0.3s; 
+    background-color: var(--btn-color);
+    margin: auto;
+    margin-bottom: 2% ;
+    border: 2px solid transparent;
+}
+
+.add-property:hover {
+    background-color: var(--btn-hover-color);
+    border: 2px solid var(--bd-color);
+}
+
+.properties {
+    display: flex;
+    justify-content:space-evenly;
+    max-width: 100%;
+    width: auto;
+    flex-wrap: wrap;
+}

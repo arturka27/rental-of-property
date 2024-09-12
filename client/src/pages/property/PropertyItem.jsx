@@ -3,14 +3,15 @@ import PropertyFormUpdate from "./PropertyFormUpdate";
 import ModalWindow from "../../shared/ui/ModalWindow";
 import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
+import './PropertyItem.css'
 
 function PropertyItem({ property }) {
   const [active, setActive] = useState(false);
   const { user, setProperties, likedProperties, setLikedProperties } =
     useContext(AppContext);
 
-  // console.log(state, "---------");
-  // console.log(liked);
+
+  const { user, setProperties, categories } = useContext(AppContext);
 
   const onHandleDelete = async () => {
     try {
@@ -52,17 +53,18 @@ function PropertyItem({ property }) {
     setActive((prev) => !prev);
   };
   return (
-    <div>
-      <h3>{property.title}</h3>
+    <div className="property">
+      <h3 className="property-title">{property.title}</h3>
       <div>
         <div>
-          <img src={property.photo} alt="property photo" width={"500px"} />
+
+          <img  className="property-photo" src={property.photo} alt="property photo" width={"400px"} />
+
         </div>
-        <p>{property.address}</p>
-        <p>{property.description}</p>
-        <p>{property.price}</p>
+        <p className="property-info">Адрес: {property.address}</p>
+        <p className="property-info">Стоимость в месяц: {property.price}₽</p>
       </div>
-      <div>
+      <div className="buttons-edit">
         {user && user.isAdmin ? (
           <>
             <button onClick={onHandleDelete}>Удалить</button>
@@ -92,8 +94,10 @@ function PropertyItem({ property }) {
         )}
         <ModalWindow active={active} setActive={setActive}>
           <PropertyFormUpdate
+            categories={categories}
             property={property}
             setProperties={setProperties}
+            setActive={setActive}
           />
         </ModalWindow>
       </div>

@@ -27,9 +27,9 @@ class PropertyServices {
     }
   };
 
-  static getAllProperties = async () => {
+  static getAllProperties = async (query) => {
     try {
-      const properties = await Property.findAll();
+      const properties = await Property.findAll({ where: query });
       return properties ? properties.map((property) => property.get()) : null;
     } catch ({ message }) {
       console.log(message);
@@ -46,8 +46,16 @@ class PropertyServices {
   };
 
   static updateProperty = async (data) => {
-    const { categoryId, userId, title, price, description, photo, address } =
-      data;
+    const {
+      id,
+      userId,
+      categoryId,
+      title,
+      price,
+      description,
+      photo,
+      address,
+    } = data;
     const property = await Property.findOne({ where: { id, userId } });
     if (property) {
       return property.update({

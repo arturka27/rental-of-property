@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HeaderPage from "../widgets/navbar/HeaderPage";
 import FavoritePage from "../pages/favorute/FavoritePage";
-import CategoriesPage from "../pages/categories/CategoriesPage";
+// import CategoriesPage from "../pages/categories/CategoriesPage";
 import PropertyPage from "../pages/property/PropertyPage";
 import AuthorizationPage from "../pages/auth/AuthorizationPage";
 import RegistrationPage from "../pages/auth/RegistrationPage";
@@ -9,23 +9,40 @@ import LogoutPage from "../pages/auth/LogoutPage";
 import { AppContext } from "./AppContext";
 import { useEffect, useState } from "react";
 import { axiosRequest, setAccessToken } from "../services/axiosinstance";
+// import PropertyByCategoryPage from "../pages/property/PropertyByCategoryPage";
+import FooterPage from "../widgets/footer/FooterPage";
+import ErrorPage from "../pages/error/ErrorPage";
 
 function App() {
   const [user, setUser] = useState(undefined);
-  const [properties, setProperties] = useState([])
+
   const [likedProperties, setLikedProperties] = useState([])
+
+  const [properties, setProperties] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  const getAllCategories = async () => {
+    try {
+      const response = await axiosRequest.get("/categories");
+      if (response.status === 200) {
+        setCategories(response.data.categories);
+      }
+    } catch ({ response }) {
+      console.log(response.data.message);
+    }
+  };
+
 
   const getAllProperties = async () => {
     try {
-      const response = await axiosRequest.get('/properties');
-      if(response.status === 200) {
-        setProperties(response.data.properties)
+      const response = await axiosRequest.get("/properties");
+      if (response.status === 200) {
+        setProperties(response.data.properties);
       }
-    } catch ({response}) {
+    } catch ({ response }) {
       console.log(response.data.message);
     }
-  }
-  console.log("user", user);
+
   
 
   const getLikedProperties = async () => {
@@ -42,42 +59,56 @@ function App() {
     }
   }
 
+  };
+
+
   const checkUser = async () => {
     try {
-      const response = await axiosRequest.get('/tokens/refresh')
-      if(response.status === 200){
+      const response = await axiosRequest.get("/tokens/refresh");
+      if (response.status === 200) {
         setAccessToken(response.data.accessToken);
-        setUser(response.data.user)
+        setUser(response.data.user);
       }
-    } catch ({response}) {
+    } catch ({ response }) {
       console.log(response.data.message);
     }
-  }
+  };
 
   useEffect(() => {
-    getAllProperties()
-    checkUser()
-    getLikedProperties()
-  },[])
+
+    getAllCategories();
+    getAllProperties();
+    checkUser();
+      getLikedProperties()
+  }, []);
+
 
   console.log(likedProperties, "likedProperties");
   
   return (
     <>
-      <AppContext.Provider value={{ user, setUser, likedProperties, setLikedProperties}}>
+
+      <AppContext.Provider
+        value={{
+          user,
+          setUser,
+          properties,
+          setProperties,
+          categories,
+          setCategories,likedProperties, setLikedProperties
+        }}
+      >
         <HeaderPage />
         <Routes>
           <Route path="/favorites" element={<FavoritePage />} />
-          <Route path="/categories" element={<CategoriesPage />} />
-          <Route path="/properties" element={<PropertyPage properties={properties} setProperties={setProperties}/>} />
-          
-          
-          
-          
+          <Route path="/properties" element={<PropertyPage />} />
+
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/logout" element={<LogoutPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <FooterPage />
       </AppContext.Provider>
     </>
   );
