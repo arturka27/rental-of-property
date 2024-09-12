@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Property, {
         foreignKey: "userId"
       })
+      
       this.belongsToMany(models.Property, {
         through: models.Favorite,
         foreignKey: "userId",

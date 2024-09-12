@@ -1,4 +1,3 @@
-const { where, Model } = require("sequelize");
 const { Category } = require("../db/models");
 
 class CategoryService {

@@ -7,6 +7,9 @@ import './PropertyItem.css'
 
 function PropertyItem({ property }) {
   const [active, setActive] = useState(false);
+  const { user, setProperties, likedProperties, setLikedProperties } =
+    useContext(AppContext);
+
 
   const { user, setProperties, categories } = useContext(AppContext);
 
@@ -21,6 +24,31 @@ function PropertyItem({ property }) {
     }
   };
 
+  const addToLiked = async (propertyId) => {
+    try {
+      const response = await axiosRequest.post("/favorites", { propertyId });
+
+      if (response.status === 200) {
+        // setLiked(data.likeState);
+        setLikedProperties((prev) => [...prev, response.data.likedProperty])
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const delFromLiked = async (propertyId) => {
+    try {
+      const response = await axiosRequest.delete(`/favorites/${propertyId}`);
+      if (response.status === 200) {
+        setLikedProperties((prev) => prev.filter((prop) => prop.id !== propertyId))
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(likedProperties);
+
   const isActive = () => {
     setActive((prev) => !prev);
   };
@@ -29,17 +57,40 @@ function PropertyItem({ property }) {
       <h3 className="property-title">{property.title}</h3>
       <div>
         <div>
+
           <img  className="property-photo" src={property.photo} alt="property photo" width={"400px"} />
+
         </div>
         <p className="property-info">Адрес: {property.address}</p>
         <p className="property-info">Стоимость в месяц: {property.price}₽</p>
       </div>
       <div className="buttons-edit">
-        {user && user.isAdmin && (
-           <>
-           <button onClick={onHandleDelete} className="property-button">Удалить объявление</button>
-           <button onClick={isActive} className="property-button">Обновить объявление</button>
-         </>
+        {user && user.isAdmin ? (
+          <>
+            <button onClick={onHandleDelete}>Удалить</button>
+            <button onClick={isActive}>Обновить</button>
+          </>
+        ) : (
+          <></>
+        )}
+        {user && likedProperties.find(({ id }) => id === property.id) ? (
+          <>
+            <button
+              className="like-button liked"
+              onClick={() => delFromLiked(property.id)}
+            >
+              Удалить из избранного
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className="like-button"
+              onClick={() => addToLiked(property.id)}
+            >
+              Добавить в избранное
+            </button>
+          </>
         )}
         <ModalWindow active={active} setActive={setActive}>
           <PropertyFormUpdate

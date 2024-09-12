@@ -15,6 +15,9 @@ import ErrorPage from "../pages/error/ErrorPage";
 
 function App() {
   const [user, setUser] = useState(undefined);
+
+  const [likedProperties, setLikedProperties] = useState([])
+
   const [properties, setProperties] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -29,6 +32,7 @@ function App() {
     }
   };
 
+
   const getAllProperties = async () => {
     try {
       const response = await axiosRequest.get("/properties");
@@ -38,7 +42,25 @@ function App() {
     } catch ({ response }) {
       console.log(response.data.message);
     }
+
+  
+
+  const getLikedProperties = async () => {
+    try {
+      const {data} = await axiosRequest.get('/favorites') 
+      console.log(data.likes);
+      
+      if (data.message === "success") {
+        const properties = data.likes[0].Properties
+        setLikedProperties(properties)
+      }
+    } catch ({response}) {
+      console.log(response.data.message);
+    }
+  }
+
   };
+
 
   const checkUser = async () => {
     try {
@@ -53,13 +75,19 @@ function App() {
   };
 
   useEffect(() => {
+
     getAllCategories();
     getAllProperties();
     checkUser();
+      getLikedProperties()
   }, []);
 
+
+  console.log(likedProperties, "likedProperties");
+  
   return (
     <>
+
       <AppContext.Provider
         value={{
           user,
@@ -67,13 +95,14 @@ function App() {
           properties,
           setProperties,
           categories,
-          setCategories,
+          setCategories,likedProperties, setLikedProperties
         }}
       >
         <HeaderPage />
         <Routes>
           <Route path="/favorites" element={<FavoritePage />} />
           <Route path="/properties" element={<PropertyPage />} />
+
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/logout" element={<LogoutPage />} />
