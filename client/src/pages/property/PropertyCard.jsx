@@ -46,23 +46,22 @@ function PropertyCard() {
   };
   return (
       {property && (
-        <div className="property">
-          <h3 className="property-title">{property.title}</h3>
-          <div>
+        <div className="property-card">
+          <div className="card-photo">
             <div>
               <img
-                className="property-photo"
+                className="card-property-photo"
                 src={property.photo}
                 alt="property photo"
                 width={"400px"}
               />
             </div>
-            <p className="property-info">Адрес: {property.address}</p>
-            <p className="property-info">Описание: {property.description}</p>
-            <p className="property-info">
-              Стоимость в месяц: {property.price}₽
-            </p>
-          </div>
+<h3 className="card-property-title">{property.title}</h3>
+        <div>
+          <p className="card-property-info">Адрес: {property.address}</p>
+          <p className="card-property-info">Описание: {property.description}</p>
+          <p className="card-property-info">Стоимость в месяц: {property.price}₽</p>
+        </div>
           <div className="buttons-edit">
             {user && user.isAdmin && (
               <>
