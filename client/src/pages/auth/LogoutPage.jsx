@@ -30,7 +30,7 @@ const { user, setUser } = useContext(AppContext)
         <button className="logoutBtn" onClick={onHandleLogout} type="button">
           Да!
         </button>
-        <button className="stayBtn" onClick={() => navigate('/')} type="button">
+        <button className="stayBtn" onClick={() => navigate(-1)} type="button">
           Нет, хочу остаться
         </button>
       </div>
