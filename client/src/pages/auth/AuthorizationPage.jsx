@@ -59,6 +59,7 @@ const { setUser } = useContext(AppContext)
             placeholder="yourEmail@xxx.com"
             required
           />
+          <label className="password-label">
           <input
             type={shown ? "text" : "password"}
             onChange={({ target }) => setPassword(target.value)}
@@ -66,9 +67,11 @@ const { setUser } = useContext(AppContext)
             placeholder="Пароль"
             required
           />
-          <button type="button" onClick={() => setShown((prev) => !prev)}>
-            глаз
+          <button className="eye-button" type="button" onClick={() => setShown((prev) => !prev)}>
+          👀
           </button>
+          </label>
+
           <div className="error">{error && <p>{error}</p>}</div>
           <button type="submit" className="btn btn-outline-success">
             Войти

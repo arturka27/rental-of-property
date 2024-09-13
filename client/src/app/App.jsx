@@ -49,7 +49,7 @@ function App() {
   const getLikedProperties = async () => {
     try {
       const {data} = await axiosRequest.get('/favorites') 
-      console.log(data.likes);
+      // console.log(data.likes);
       
       if (data.message === "success") {
         const properties = data.likes[0].Properties
@@ -60,7 +60,7 @@ function App() {
     }
   }
 
-
+// console.log(likedProperties,);
 
   const checkUser = async () => {
     try {

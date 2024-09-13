@@ -14,7 +14,7 @@ function HeaderPage() {
     <div className="header">
        <NavLink className="navlinkHome"to="/properties"><img className="logo" src="../../../public/image/logo.png" alt="logo" width={'100px'}/></NavLink>
       
-      <button onClick={onHandleShow}>категории</button>
+      <button onClick={onHandleShow}>Категории</button>
       {showCategories && (
         <ul className="categories">
            {categories.map((category)=> ( <CategoriesPage key={category.id} category={category}/>))}
@@ -23,14 +23,14 @@ function HeaderPage() {
       <NavLink className="title" to={'/properties'}><h1 >Квартирный Базар</h1></NavLink>
       {user ? (
         <div className="log-logout">
-          <h2 className="hello-text">Привет {user.name}!</h2>
-          {!user.isAdmin && (<NavLink className="navlink"to="/favorites">избранное</NavLink>)}
-          <NavLink className="navlink" to="/logout">выход</NavLink>
+          <h2 className="hello-text">Привет, {user.name}!</h2>
+          {!user.isAdmin && (<NavLink className="navlink"to="/favorites">Избранное</NavLink>)}
+          <NavLink className="navlink" to="/logout">Выход</NavLink>
         </div>
       ) : (
         <div className="log-logout">
-          <NavLink className="navlink" to="/authorization">вход</NavLink>
-          <NavLink className="navlink" to="/registration">регистрация</NavLink>
+          <NavLink className="navlink" to="/authorization">Вход</NavLink>
+          <NavLink className="navlink" to="/registration">Регистрация</NavLink>
         </div>
       )}
 

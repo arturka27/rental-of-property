@@ -1,13 +1,11 @@
-import React, { useContext, useState } from'react';
-import { useNavigate } from 'react-router-dom';
-import { axiosRequest, setAccessToken } from '../../services/axiosinstance';
-import { AppContext } from '../../app/AppContext';
-import './LogRegPage.css'
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { axiosRequest, setAccessToken } from "../../services/axiosinstance";
+import { AppContext } from "../../app/AppContext";
+import "./LogRegPage.css";
 
 function RegistrationPage() {
-
-const { setUser } = useContext(AppContext)
-
+  const { setUser } = useContext(AppContext);
 
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -60,27 +58,26 @@ const { setUser } = useContext(AppContext)
 
   return (
     <div className="mainForm">
-
-      <form onSubmit={onHandleSubmit} className='regLogForm'>
-      <h2>Создать профиль</h2>
-          <input
-            required
-            className="maininput"
-            type="text"
-            placeholder="Ваше имя"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-          <input
-            required
-            type="email"
-            className="maininput"
-            placeholder="email@xxx.com"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            minLength={5}
-          />
-          <input
+      <form onSubmit={onHandleSubmit} className="regLogForm">
+        <h2>Создать профиль</h2>
+        <input
+          required
+          className="maininput"
+          type="text"
+          placeholder="Ваше имя"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+        <input
+          required
+          type="email"
+          className="maininput"
+          placeholder="email@xxx.com"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          minLength={5}
+        />
+        {/* <input
             type={shown? 'text' : 'password'}
             className="maininput"
             placeholder="Пароль"
@@ -88,19 +85,49 @@ const { setUser } = useContext(AppContext)
             required
             minLength={3}
             onChange={(event) => setPassword(event.target.value)}
-          />
+          /> */}
+        {/* <input
+          required
+          type={shown ? "text" : "password"}
+          className="maininput"
+          placeholder="Подтвердите пароль"
+          value={confirm}
+          onChange={(event) => setConfirm(event.target.value)}
+        /> */}
+        <label className="password-label">
           <input
-            required
-            type={shown? 'text' : 'password'}
+            type={shown ? "text" : "password"}
+            onChange={({ target }) => setPassword(target.value)}
             className="maininput"
-            placeholder="Подтвердите пароль"
-            value={confirm}
-            onChange={(event) => setConfirm(event.target.value)}
+            placeholder="Пароль"
+            required
           />
-        <button type='button' onClick={() => setShown((prev) => !prev)}>
-          глаз
-        </button>
-        <div className='error'>{error && <p>{error}</p>}</div>
+          <button
+            className="eye-button"
+            type="button"
+            onClick={() => setShown((prev) => !prev)}
+          >
+            👀
+          </button>
+        </label>{" "}
+        <label className="password-label">
+        <input
+          required
+          type={shown ? "text" : "password"}
+          className="maininput"
+          placeholder="Подтвердите пароль"
+          value={confirm}
+          onChange={(event) => setConfirm(event.target.value)}
+        />
+          {/* <button
+            className="eye-button"
+            type="button"
+            onClick={() => setShown((prev) => !prev)}
+          >
+            👀
+          </button> */}
+        </label>
+        <div className="error">{error && <p>{error}</p>}</div>
         <button className="mainFormBtn" type="submit">
           Зарегистрироваться
         </button>

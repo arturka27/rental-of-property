@@ -75,7 +75,7 @@ function PropertyItem({ property }) {
           />
         </div>
         <p className="property-info">Адрес: {property.address}</p>
-        <p className="property-info">Стоимость в месяц: {property.price}₽</p>
+        <p className="property-info">Стоимость в месяц: {property.price}§</p>
       </div>
       <div className="buttons-edit">
         {user && user.isAdmin ? (
@@ -91,7 +91,7 @@ function PropertyItem({ property }) {
 
 
         {
-          user? (
+          user && !user.isAdmin ?  (
             likedProperties.find(({ id }) => id === property.id) ? (
               <>
                 <button

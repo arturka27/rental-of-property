@@ -7,7 +7,7 @@ import './LogoutPage.css'
 
 function LogoutPage() {
   const navigate = useNavigate();
-const { user, setUser } = useContext(AppContext)
+const { user, setUser,  setLikedProperties } = useContext(AppContext)
 
 
   const onHandleLogout = async () => {
@@ -15,9 +15,10 @@ const { user, setUser } = useContext(AppContext)
       const { data } = await axiosRequest.delete('/auth/logout');
       console.log(data);
       if (data.message === 'success') {
-        setAccessToken(data.accessToken);
+        setAccessToken("");
         setUser(null);
         navigate('/properties')
+        // setLikedProperties([])
       }
     } catch (error) {
         console.log(error);

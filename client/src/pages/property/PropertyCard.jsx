@@ -67,7 +67,7 @@ function PropertyCard() {
                 Описание: {property.description}
               </p>
               <p className="card-property-info">
-                Стоимость в месяц: {property.price}₽
+                Стоимость в месяц: {property.price}§
               </p>
               <div className="buttons-edit">
               {user && user.isAdmin && (
