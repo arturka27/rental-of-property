@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { axiosRequest } from "../../services/axiosinstance";
 import { AppContext } from "../../app/AppContext";
-import "./PropertyForm.css"
+import "./PropertyForm.css";
 
 function PropertyFormUpdate({ property, setActive }) {
   const { categories, setProperties } = useContext(AppContext);
@@ -11,9 +11,6 @@ function PropertyFormUpdate({ property, setActive }) {
   const [description, setDescription] = useState(property.description);
   const [photo, setPhoto] = useState(property.photo);
   const [address, setAddress] = useState(property.address);
-
-  console.log("property", property);
-  
 
   const onHandleUpdateProperty = async (e) => {
     try {
