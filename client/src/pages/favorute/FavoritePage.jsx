@@ -8,7 +8,7 @@ import { AppContext } from '../../app/AppContext';
 function FavoritePage() {
   const { user, likedProperties } = useContext(AppContext);
   return (
-    <div className="property-page">
+    <div className="favorite-property-page">
     <div  className="properties">
     {user && likedProperties &&
       likedProperties.map((property) => (

@@ -100,6 +100,7 @@ function App() {
         <Routes>
           <Route path="/favorites" element={<FavoritePage />} />
           <Route path="/properties" element={<PropertyPage />} />
+          <Route index element={<PropertyPage />} />
           <Route path="/properties/:propertyId" element={<PropertyCard />} />
           <Route path="/authorization" element={<AuthorizationPage />} />
           <Route path="/registration" element={<RegistrationPage />} />
