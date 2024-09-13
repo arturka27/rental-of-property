@@ -87,25 +87,33 @@ function PropertyItem({ property }) {
               Обновить
             </button>
           </>
-        ) : likedProperties.find(({ id }) => id === property.id) ? (
-          <>
-            <button
-              className="property-button liked"
-              onClick={() => delFromLiked(property.id)}
-            >
-              Удалить из избранного
-            </button>
-          </>
-        ) : (
-          <>
-            <button
-              className="property-button"
-              onClick={() => addToLiked(property.id)}
-            >
-              Добавить в избранное
-            </button>
-          </>
-        )}
+        ) : <></>}
+
+
+        {
+          user? (
+            likedProperties.find(({ id }) => id === property.id) ? (
+              <>
+                <button
+                  className="property-button liked"
+                  onClick={() => delFromLiked(property.id)}
+                >
+                  Удалить из избранного
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className="property-button"
+                  onClick={() => addToLiked(property.id)}
+                >
+                  Добавить в избранное
+                </button>
+              </>
+            )
+          
+          ):(<></>)
+        }
 
         <button
           onClick={() => {
