@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { axiosRequest } from "../../services/axiosinstance";
 import { AppContext } from "../../app/AppContext";
-import "./PropertyForm.css"
+import "./PropertyForm.css";
 
 function PropertyFormUpdate({ property, setActive }) {
   const { categories, setProperties } = useContext(AppContext);
@@ -65,26 +65,26 @@ function PropertyFormUpdate({ property, setActive }) {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="title"
+        placeholder="название"
       />
       <input
         type="number"
         value={price}
         onChange={(e) => setPrice(+e.target.value)}
-        placeholder="title"
+        placeholder="цена"
       />
       <input
         type="text"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="title"
+        placeholder="описание"
       />
       <input type="file" onChange={(e) => setPhoto(e.target.files[0])} />
       <input
         type="text"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="info"
+        placeholder="адрес"
       />
 
       <button type="submit">Обновить</button>
