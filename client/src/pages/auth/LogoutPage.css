@@ -24,7 +24,7 @@
     border: none; /* Убираем рамку */
     padding: 10px 15px; 
     border-radius: 5px; /* Скругление углов */
-    cursor: pointer; /* Курсор при наведении */
+ /* Курсор при наведении */
     transition:0.3s; 
     background-color: var(--logout-btn-color);
     margin: auto;
@@ -35,7 +35,7 @@
     border: none; /* Убираем рамку */
     padding: 10px 15px; 
     border-radius: 5px; /* Скругление углов */
-    cursor: pointer; /* Курсор при наведении */
+ /* Курсор при наведении */
     transition:0.3s; 
     background-color: var(--stay-btn-color);
     margin: auto;

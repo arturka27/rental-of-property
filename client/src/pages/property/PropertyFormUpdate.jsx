@@ -12,10 +12,6 @@ function PropertyFormUpdate({ property, setActive }) {
   const [photo, setPhoto] = useState(property.photo);
   const [address, setAddress] = useState(property.address);
 
-  console.log(property, 2222222);
-
-  console.log(title);
-
   const onHandleUpdateProperty = async (e) => {
     try {
       e.preventDefault();
@@ -69,26 +65,26 @@ function PropertyFormUpdate({ property, setActive }) {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="title"
+        placeholder="название"
       />
       <input
         type="number"
         value={price}
         onChange={(e) => setPrice(+e.target.value)}
-        placeholder="title"
+        placeholder="цена"
       />
       <input
         type="text"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="title"
+        placeholder="описание"
       />
       <input type="file" onChange={(e) => setPhoto(e.target.files[0])} />
       <input
         type="text"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder="info"
+        placeholder="адрес"
       />
 
       <button type="submit">Обновить</button>

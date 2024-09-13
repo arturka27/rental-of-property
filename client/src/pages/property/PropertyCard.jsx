@@ -4,6 +4,7 @@ import { AppContext } from "../../app/AppContext";
 import { axiosRequest } from "../../services/axiosinstance";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalWindow from "../../shared/ui/ModalWindow";
+import "./PropertyCard.css";
 
 function PropertyCard() {
   const [active, setActive] = useState(false);
@@ -44,7 +45,6 @@ function PropertyCard() {
     setActive((prev) => !prev);
   };
   return (
-    <>
       {property && (
         <div className="property">
           <h3 className="property-title">{property.title}</h3>
