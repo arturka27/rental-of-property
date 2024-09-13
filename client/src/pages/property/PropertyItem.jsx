@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function PropertyItem({ property }) {
+  
   const [active, setActive] = useState(false);
   const {
     user,
@@ -54,12 +55,13 @@ function PropertyItem({ property }) {
       console.log(error);
     }
   };
-  console.log(likedProperties);
+
 
   const isActive = () => {
     setActive((prev) => !prev);
   };
   return (
+
     <div className="property">
       <h3 className="property-title">{property.title}</h3>
       <div>
@@ -122,7 +124,8 @@ function PropertyItem({ property }) {
         </ModalWindow>
       </div>
     </div>
-  );
+
+      );
 }
 
 export default PropertyItem;
