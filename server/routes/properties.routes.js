@@ -68,14 +68,13 @@ router.put(
       const { id } = req.params;
       const { categoryId, title, price, description, photo, address } =
         req.body;
-      let pathImages = "";
-      if (!req.file) {
-        pathImages =
-          "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg";
-      } else {
+      let property = await PropertyServices.getPropertyById(id);
+
+      let pathImages = property.photo;
+
+      if (req.file) {
         pathImages = "/img/" + req.file?.filename;
       }
-      let property = await PropertyServices.getPropertyById(id);
       if (property) {
         property = await PropertyServices.updateProperty({
           id,
