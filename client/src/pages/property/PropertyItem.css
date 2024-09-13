@@ -1,0 +1,60 @@
+:root {
+  --bd-color: #4e026e;
+  --btn-color: #d2006b;
+  --btn-hover-color: #e869aa;
+}
+
+.property {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 450px;
+  border: 2px solid var(--bd-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 6px;
+  background-color: var(--btn-hover-color);
+}
+
+.property-title,
+.property-info,
+.property-photo {
+    margin-top: 10px;
+  background-color: var(--btn-hover-color);
+  text-align: center;
+}
+
+.property-title {
+    font-size: 25px;
+}
+
+.property img {
+  border-radius: 10px;
+  border: 2px solid var(--bd-color);
+}
+
+.property-button {
+  font-weight: 600;
+  font-size: 20px;
+  border: none; /* Убираем рамку */
+  padding: 8px 100px;
+  border-radius: 5px; /* Скругление углов */
+ /* Курсор при наведении */
+  transition: 0.3s;
+  background-color: var(--btn-color);
+  /* margin: auto; */
+  border: 2px solid transparent;
+  margin: 1% 2%;
+  white-space: nowrap;
+}
+
+.property-button:hover {
+  background-color: var(--btn-hover-color);
+  border: 2px solid var(--bd-color);
+}
+
+.buttons-edit {
+  display: flex;
+  flex-direction: column;
+}

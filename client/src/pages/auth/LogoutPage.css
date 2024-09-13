@@ -1,0 +1,54 @@
+:root {
+    --bd-color: #4e026e;
+    --btn-color: #d2006b;
+    --btn-hover-color: #e869aa;
+    --bg-page-color: #B365D4;
+    --stay-btn-color: #E93A93;
+    --logout-btn-color: #4E036F
+  }
+
+.logoutContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 470px;
+    background-color: var(--bg-page-color);
+}
+
+.confirmLogout {
+    margin-top: 10%;
+}
+
+.logoutBtn {
+    border: none; /* Убираем рамку */
+    padding: 10px 15px; 
+    border-radius: 5px; /* Скругление углов */
+ /* Курсор при наведении */
+    transition:0.3s; 
+    background-color: var(--logout-btn-color);
+    margin: auto;
+    border: 2px solid transparent;
+}
+
+.stayBtn{
+    border: none; /* Убираем рамку */
+    padding: 10px 15px; 
+    border-radius: 5px; /* Скругление углов */
+ /* Курсор при наведении */
+    transition:0.3s; 
+    background-color: var(--stay-btn-color);
+    margin: auto;
+    margin-bottom: 12%;
+    border: 2px solid transparent;
+}
+
+.stayBtn:hover {
+    background-color: var(--btn-hover-color);
+    border: 2px solid var(--bd-color);
+}
+
+.logoutBtn:hover{
+    background-color: var(--btn-hover-color);
+    border: 2px solid var(--bd-color);
+}

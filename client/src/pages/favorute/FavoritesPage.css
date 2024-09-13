@@ -1,0 +1,11 @@
+:root {
+    --bd-color: #4e026e;
+    --btn-color: #d2006b;
+    --btn-hover-color: #e869aa;
+    --bg-page-color: #B365D4;
+  }
+
+  .favorite-property-page { 
+    min-height: 470px;
+    background-color: var(--bg-page-color);
+  }
