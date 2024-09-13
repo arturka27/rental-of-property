@@ -48,10 +48,11 @@ function PropertyCard() {
     <div className="property-card">
       <div className="card-photo">
         <img
-          className="property-photo"
+          className="card-property-photo"
           src={property.photo}
           alt="property photo"
           width={"400px"}
+          height={'400px'}
         />
       </div>
       <div className="card-info">
