@@ -49,8 +49,9 @@ const { setUser } = useContext(AppContext)
   return (
     <>
       <div className="mainForm">
-        <h2>Авторизация</h2>
+
         <form onSubmit={onHadleSubmit} className="regLogForm">
+        <h2>Авторизация</h2>
           <input
             type="email"
             onChange={({ target }) => setEmail(target.value)}

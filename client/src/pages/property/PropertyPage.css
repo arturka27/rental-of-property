@@ -10,6 +10,7 @@
 }
 
 .property-page {
+    min-height: 470px;
     background-color: var(--bg-page-color);
     padding: 10px;
     display: flex;

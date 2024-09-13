@@ -60,8 +60,9 @@ const { setUser } = useContext(AppContext)
 
   return (
     <div className="mainForm">
-      <h2>Создать профиль</h2>
+
       <form onSubmit={onHandleSubmit} className='regLogForm'>
+      <h2>Создать профиль</h2>
           <input
             required
             className="maininput"
