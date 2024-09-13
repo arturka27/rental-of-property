@@ -8,24 +8,22 @@
 .property-card {
     padding: 20px;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    height: 470px;
+    min-height: 470px;
+    /* height: 470px; */
     background-color: var(--btn-hover-color);
 }
 
 .card-photo {
-    object-fit: cover;
-    padding-right: 2%;
-    overflow: hidden;
-    position: relative;
+    margin-left: 1em;
+    max-width: 50%;
 }
 
 .card-property-photo {
-    width: 100%;
-    border: 2px solid var(--bd-color);
+    max-height: 23em;
+    /* max-width: 80vh; */
+    border: 3px solid var(--bd-color);
     border-radius: 10px;
-    position: absolute;
 }
 
 .card-info {

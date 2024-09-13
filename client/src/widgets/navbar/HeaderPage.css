@@ -7,8 +7,7 @@
 .header {
   display: flex;
   align-items: center;
-
-  /* justify-content: space-between; Выравнивание элементов */
+  /* justify-content: space-between; */
   position: relative; /* Для позиционирования выпадающего меню */
   background-color: var(--header-bg-color); /* Цвет фона */
   padding: 10px 20px; /* Отступы */
@@ -22,7 +21,7 @@
   ); /* Цвет фона кнопки */ /* Цвет текста кнопки */
   border: none; /* Убираем рамку */
   padding: 10px 15px; /* Отступы */
-  margin: 0 17% 0 1%;
+  margin: 0 12em 0 0.7em;
   border-radius: 5px; /* Скругление углов */
  /* Курсор при наведении */
   transition:0.3s; /* Плавный переход */
@@ -83,7 +82,7 @@
 }
 
 .log-logout {
-    padding: 9px;
+  margin: 0 3em;
     align-items: center;
     display: flex;
     background-color: var(--header-bg-color);
@@ -95,7 +94,7 @@
     padding: 10px 15px; /* Отступы */
     border-radius: 5px;
   text-decoration: none;
-  margin: 1em;
+  margin: 0.5em;
   background-color: var(--header-btn-color);
   transition: 0.3s;
 }
@@ -123,7 +122,7 @@
 
 .title {
     text-decoration: none;
-    margin-right: 5%;
+    margin-right: 3%;
 }
 
 
@@ -167,7 +166,6 @@ border-radius: 10%;
   background-color: var(--header-bg-color);
   border: 5px solid var(--header-btn-color);
   white-space: nowrap;
-  margin-right: 16%;
   font-size: 70px;
   cursor: url('https://cdn.custom-cursor.com/db/pointer/32/Pink_Pointer.png'), pointer;
 transition: all 0.6s;

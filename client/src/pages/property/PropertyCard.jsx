@@ -54,12 +54,14 @@ function PropertyCard() {
                 className="card-property-photo"
                 src={property.photo}
                 alt="property photo"
-                width={"400px"}
+                width={"700px"}
+                // height={"400px"}
               />
             </div>
             </div>
+
+            <div className="card-info">
             <h3 className="card-property-title">{property.title}</h3>
-            <div>
               <p className="card-property-info">Адрес: {property.address}</p>
               <p className="card-property-info">
                 Описание: {property.description}
@@ -67,8 +69,7 @@ function PropertyCard() {
               <p className="card-property-info">
                 Стоимость в месяц: {property.price}₽
               </p>
-            </div>
-            <div className="buttons-edit">
+              <div className="buttons-edit">
               {user && user.isAdmin && (
                 <>
                   <button onClick={onHandleDelete} className="property-button">
@@ -97,6 +98,8 @@ function PropertyCard() {
                 />
               </ModalWindow>
             </div>
+            </div>
+
           </div>
       )}
     </>
